@@ -1,28 +1,10 @@
-"use client";
+import React, { Suspense } from "react";
+import ProductsParams from "./components/ProductsParams";
 
-import Image, { StaticImageData } from "next/image";
-import { useSearchParams } from "next/navigation";
-import React from "react";
-
-const SpecialProducts = () => {
-  const searchParams = useSearchParams();
-  const price = searchParams.get("price");
-  const category = searchParams.get("category");
-  const brand = searchParams.get("brand");
-  const image = searchParams.get("image");
+export default function SpecialPage() {
   return (
-    <>
-      <div className="h-screen flex items-center justify-center">
-        {price} {category} {brand}
-        <Image
-          src={image as string | StaticImageData}
-          alt={brand as string}
-          width={500}
-          height={500}
-        />
-      </div>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductsParams />
+    </Suspense>
   );
-};
-
-export default SpecialProducts;
+}
