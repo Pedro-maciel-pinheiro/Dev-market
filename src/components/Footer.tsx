@@ -1,52 +1,152 @@
-import Link from "next/link";
-import React from "react";
-import { Github, LinkedinIcon, PhoneCall } from "lucide-react";
 
-export default function Footer() {
+import {
+  BiLogoGithub,
+  BiLogoWhatsapp,
+  BiLogoLinkedinSquare,
+  BiLogoYoutube,
+} from "react-icons/bi";
+import Link from "next/link";
+
+type ImageProps = {
+  url?: string;
+  src: string;
+  alt?: string;
+};
+
+type Links = {
+  title: string;
+  url: string;
+};
+
+type ColumnLinks = {
+  links: Links[];
+};
+
+type SocialMediaLinks = {
+  url: string;
+  icon: React.ReactNode;
+};
+
+type FooterLink = {
+  title: string;
+  url: string;
+};
+
+type Props = {
+  logo: ImageProps;
+  columnLinks: ColumnLinks[];
+  socialMediaLinks: SocialMediaLinks[];
+  footerText: string;
+  footerLinks: FooterLink[];
+};
+
+export type Footer4Props = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
+
+const Footer = (props: Footer4Props) => {
+  const { logo, footerText,  footerLinks, socialMediaLinks } = {
+    ...Footer4Defaults,
+    ...props,
+  } as Props;
   return (
-    <footer
-      className="flex flex-col items-center justify-center gap-5
-     text-base-content rounded p-10 bg-black
-      text-white"
-    >
-      <nav className="grid grid-flow-col gap-4 font-semibold text-sm">
-        <Link className="link link-hover" href={"/"}>
-          Home
-        </Link>
-        <Link className="link link-hover" href={"/"}>
-          Contact
-        </Link>
-      </nav>
-      <nav>
-        <div className="grid grid-flow-col gap-4">
-          <Link
-            className="transition-all duration-300 hover:scale-110 hover:text-blue-500"
-            href="https://www.linkedin.com/in/jpmp1998/"
-            target="_blank"
-          >
-            <LinkedinIcon size={28} />
+    <footer className="px-[5%] py-5 md:py-8 lg:py-14 bg-black text-white">
+      <div className="container">
+        <div className="grid grid-cols-1 items-center justify-center justify-items-center gap-x-[4vw] gap-y-12 pb-12 md:pb-18 lg:grid-cols-[0.25fr_1fr_0.25fr] lg:justify-between lg:gap-y-4 lg:pb-20">
+          <Link href={logo.url as string} className="lg:justify-self-start">
+            <p
+              className="inline-block
+             font-bold uppercase font-serif"
+            >
+              Dev{"-"}Market
+            </p>
           </Link>
           <Link
-            className="transition-all duration-300 hover:scale-110 hover:text-purple-500"
-            href="https://github.com/Pedro-maciel-pinheiro"
-            target="_blank"
+            href={"https://www.linkedin.com/in/jpmp1998/"}
+            className="flex flex-col font-semibold text-sm md:text-lg"
           >
-            <Github size={28} />
+            <span className="text-center">Pedro maciel pinheiro</span>
+            <span
+              className="bg-gradient-to-r hover:bg-gradient-to-l
+            transition-all duration-300
+             from-purple-500 to-blue-500 bg-clip-text text-transparent"
+            >
+              Front-end developer & Web designer
+            </span>
           </Link>
-          <Link
-            className="transition-all duration-300 hover:scale-110 hover:text-green-500"
-            href="https://web.whatsapp.com/send?phone=5561998516239"
-            target="_blank"
+          <div
+            className="flex items-start justify-start 
+          justify-items-center gap-x-3 lg:justify-self-end"
           >
-            <PhoneCall size={28} />
-          </Link>
+            {socialMediaLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.url}
+                className="focus-visible:outline-none"
+                target="blank"
+              >
+                {link.icon}
+              </Link>
+            ))}
+          </div>
         </div>
-      </nav>
-      <aside>
-        <p className="font-semibold">
-          Maciel Pinheiro Front-end Developer since 2022
-        </p>
-      </aside>
+        <div className="h-px w-full bg-white" />
+        <div className="flex flex-col-reverse items-center justify-center justify-items-center pb-4 pt-6 text-sm md:flex-row md:gap-x-6 md:pb-0 md:pt-8">
+          <p className="mt-8 md:mt-0">{footerText}</p>
+          <ul className="grid grid-flow-row grid-cols-[max-content] items-center justify-center justify-items-center gap-x-0 gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0">
+            {footerLinks.map((link, index) => (
+              <li
+                key={index}
+                className="underline decoration-white underline-offset-1 "
+              >
+                <a href={link.url} className="focus-visible:outline-none">
+                  {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </footer>
   );
-}
+};
+
+export default Footer;
+
+export const Footer4Defaults: Footer4Props = {
+  logo: {
+    url: "/",
+    src: "",
+    alt: "Logo image",
+  },
+  columnLinks: [
+    {
+      links: [
+        { title: "Link One", url: "#" },
+        { title: "Link Two", url: "#" },
+        { title: "Link Three", url: "#" },
+      ],
+    },
+  ],
+  socialMediaLinks: [
+    {
+      url: "https://github.com/Pedro-maciel-pinheiro",
+      icon: <BiLogoGithub className="size-7 hover:text-purple-500" />,
+    },
+    {
+      url: "https://web.whatsapp.com/send?phone=5561998516239",
+      icon: <BiLogoWhatsapp className="size-7 hover:text-green-500" />,
+    },
+    {
+      url: "https://www.linkedin.com/in/jpmp1998/",
+      icon: <BiLogoLinkedinSquare className="size-7 hover:text-blue-500" />,
+    },
+  ],
+  footerText: "© 2024 Dev-Market. All rights reserved.",
+  footerLinks: [
+    { title: "Privacy Policy", url: "#" },
+    { title: "Terms of Service", url: "#" },
+    { title: "Cookies Settings", url: "#" },
+  ],
+};
+
+Footer.displayName = "Footer";

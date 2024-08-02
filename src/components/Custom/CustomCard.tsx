@@ -16,7 +16,7 @@ interface CardProps {
 const CustomCard = ({ title, subtitle, productslist }: CardProps) => {
   return (
     <>
-      <div className="h-full w-full  mx-auto border-t mt-6 px-2 ">
+      <div className="h-full w-full  mx-auto  mt-6 px-2 ">
         <div
           className="flex items-center gap-2  
         w-full text-[#DB4444] text-lg font-semibold mt-1"

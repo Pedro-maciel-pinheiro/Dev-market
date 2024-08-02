@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import TopHeader from "@/components/Top-header/TopHeader";
 import { ShoppingCartProvider } from "@/context/shop/ShoppingCartContext";
+import ReduxProvider from "@/redux/provider";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({
     <ShoppingCartProvider>
       <html lang="en">
         <body className={roboto.className}>
-          <TopHeader />
-          <Navbar />
-          {children}
-          <Footer />
+          <ReduxProvider>
+            <TopHeader />
+            <Navbar />
+            {children}
+            <Footer />
+          </ReduxProvider>
         </body>
       </html>
     </ShoppingCartProvider>

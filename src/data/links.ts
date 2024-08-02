@@ -11,10 +11,7 @@ export const LinkDataNavbar = [
       title: "About",
       linkpath: "/about",
     },
-    {
-      title: "Sign Up",
-      linkpath: "/sign-up",
-    },
+  
   ];
 
 export const LinkDataHeader = [

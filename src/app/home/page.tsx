@@ -2,14 +2,14 @@ import SlideSwiper from "@/components/SlideSwiper/SlideSwiper";
 import { Button } from "@/components/ui/button";
 import { getProductsData, ProductsProps } from "@/data";
 import { LinkDataHeader } from "@/data/links";
-import { StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Category from "./components/Category";
 import CustomCard from "../../components/Custom/CustomCard";
 import CustomCardGrid from "../../components/Custom/CustomCardGrid";
 import GridCard from "../../components/Custom/GridCard";
+import Category from "./components/Category";
+import DeliverInfo from "./components/DeliverInfo";
 
 export default async function Hero() {
   const productsList: ProductsProps[] = await getProductsData();
@@ -49,20 +49,6 @@ export default async function Hero() {
           productslist={productsLimit}
         />
       </div>
-
-      {/* Categorys */}
-      {/* <div className="w-full h-full max-w-7xl mx-auto">
-        <div
-          className="flex items-center gap-2  
-        w-full text-[#DB4444] text-lg font-semibold mt-1"
-        >
-          <span className="w-3 h-6 bg-[#DB4444] rounded-xl" />
-          <h1>Categories</h1>
-        </div>
-
-        <h1 className="font-semibold mt-4 text-2xl"> Browse By Category</h1>
-        <Category />
-      </div> */}
 
       <div className="max-w-7xl">
         <CustomCard
@@ -129,12 +115,12 @@ export default async function Hero() {
                   },
                 }}
               >
-              <Button
-                className="bg-green-500 text-white w-40 h-12 transition-all duration-300
+                <Button
+                  className="bg-green-500 text-white w-40 h-12 transition-all duration-300
                hover:bg-slate-100 hover:text-black hover:translate-x-1"
-              >
-                Buy Now{" "}
-              </Button>
+                >
+                  Buy Now{" "}
+                </Button>
               </Link>
             </div>
           </div>
@@ -177,18 +163,7 @@ export default async function Hero() {
       </div>
 
       <div className="w-full h-full max-w-7xl mx-auto">
-        <div className="mt-36 mb-16">
-          <Image
-            src={"/img/drive.png"}
-            className="mx-auto"
-            alt="drive"
-            width={1000}
-            height={1000}
-          />
-        </div>
-      </div>
-      <div>
-        <section></section>
+        <DeliverInfo />
       </div>
     </>
   );

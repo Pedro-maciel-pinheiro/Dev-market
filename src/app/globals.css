@@ -10,6 +10,18 @@
   border-radius: 5px;
 }
 
+.test{
+  transform: translateX(-850px);
+  opacity: 0;
+}
+.test-1{
+  
+}
+.w-test{
+  width: 100%;
+  max-width: 850px;
+}
+
 *::-webkit-scrollbar-track {
   background: rgb(218, 218, 218);
   border-radius: 5px;

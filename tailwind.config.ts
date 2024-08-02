@@ -7,7 +7,9 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    "./node_modules/@relume_io/relume-ui/dist/**/*.{js,ts,jsx,tsx}"
 	],
+  
   prefix: "",
   theme: {
     container: {
@@ -74,7 +76,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@relume_io/relume-tailwind")],
 } satisfies Config
 
 export default config
