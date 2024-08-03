@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import { PhoneWallpaper } from "@/data/phoneimgs";
 
 const SlideSwiper = () => {
   return (
@@ -22,14 +23,31 @@ const SlideSwiper = () => {
           clickable: true,
         }}
         modules={[Pagination, Autoplay, EffectFade]}
-        className="max-w-[1100px]"
+        className="w-[400px] md:w-full  max-w-[1100px] h-[200px]  md:h-[400px] 
+        shadow-xl shadow-black/15 rounded-xl "
       >
-        <SwiperSlide className="overflow-hidden rounded-xl  w-[1100px] h-full]">
+        {PhoneWallpaper.map((img, index) => (
+          <SwiperSlide
+            key={index}
+            className="overflow-hidden rounded-xl w-full h-full
+          relative
+           "
+          >
+            <div className="w-full h-full absolute  text-white font-semibold">
+              <div className="w-full h-full flex flex-col justify-end text-sm bg-black/20 lg:p-8">
+                <h1 className="px-2 text-lg lg:text-5xl ">{img.title}</h1>
+                <span className="px-3  ">{img.subtitle}</span>
+              </div>
+            </div>
             <Image
-             src={"/img/test.png"} alt={"bg"} width={1100} height={1000}
-              className="rounded-xl hover:scale-105 transition-all 
-              duration-300 object-contain "/>
-        </SwiperSlide> 
+              src={img.backgroundImage}
+              alt={img.title}
+              width={1200}
+              height={1200}
+              className="object-contain rounded-xl "
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

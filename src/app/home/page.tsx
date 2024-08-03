@@ -19,12 +19,13 @@ export default async function Hero() {
   return (
     <>
       <div
-        className="flex justify-between w-full h-full 
+        className="flex items-center justify-center
+         lg:justify-between w-full h-full 
        text-black max-w-7xl mx-auto"
       >
         <section
-          className="flex flex-col gap-1 font-medium 
-         items-end justify-start px-2
+          className="lg:flex flex-col gap-1 font-medium 
+         items-end justify-start px-2 hidden
           h-96 border-r-2 mt-1"
         >
           {LinkDataHeader.map((data, index) => (

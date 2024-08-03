@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Button, Input, Label } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { BiLogoGoogle } from "react-icons/bi";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type ImageProps = {
   url?: string;
@@ -26,7 +28,8 @@ type Props = {
   footerText: string;
 };
 
-export type Signup7Props = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type Signup7Props = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 const Signup7 = (props: Signup7Props) => {
   const {
@@ -56,15 +59,32 @@ const Signup7 = (props: Signup7Props) => {
   return (
     <section>
       <div className="relative grid min-h-screen grid-cols-1 items-stretch justify-center overflow-auto lg:grid-cols-2">
+        <div className="hidden bg-background-secondary lg:block">
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div className="absolute bottom-auto left-0 right-0 top-0 z-10 flex h-16 w-full items-center justify-center px-[5%] md:h-18 lg:justify-between">
-          <a href={logo.url} className="focus-visible:outline-none">
-            <img src={logo.src} alt={logo.alt} />
-          </a>
+          <Link
+            href={logo.url as string}
+            className="focus-visible:outline-none mx-auto"
+          >
+            <Image
+              src={logo.src as string | StaticImageData}
+              alt={logo.alt as string}
+              width={200}
+              height={200}
+            />
+          </Link>
         </div>
         <div className="relative mx-[5vw] flex items-center justify-center pb-16 pt-20 md:pb-20 md:pt-24 lg:py-20">
           <div className="container max-w-sm">
             <div className="container mb-6 max-w-lg text-center md:mb-8">
-              <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">{title}</h1>
+              <h1 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl lg:text-6xl">
+                {title}
+              </h1>
               <p className="md:text-md">{description}</p>
             </div>
             <form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
@@ -111,7 +131,7 @@ const Signup7 = (props: Signup7Props) => {
                   iconLeft={signUpButton.iconLeft}
                   iconRight={signUpButton.iconRight}
                 >
-                  {signUpButton.title}
+                  <Link href={"#"}> {signUpButton.title}</Link>
                 </Button>
                 <Button
                   variant={signUpWithGoogleButton.variant}
@@ -120,21 +140,22 @@ const Signup7 = (props: Signup7Props) => {
                   iconRight={signUpWithGoogleButton.iconRight}
                   className="gap-x-3"
                 >
-                  {signUpWithGoogleButton.title}
+                  <Link href={"#"}> {signUpWithGoogleButton.title}</Link>
                 </Button>
               </div>
             </form>
             <div className="mt-5 inline-flex w-full items-center justify-center gap-x-1 text-center md:mt-6">
               <p>{logInText}</p>
-              <a href={logInLink.url} className="underline focus-visible:outline-none">
+              <a
+                href={logInLink.url}
+                className="underline focus-visible:outline-none"
+              >
                 {logInLink.text}
               </a>
             </div>
           </div>
         </div>
-        <div className="hidden bg-background-secondary lg:block">
-          <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
-        </div>
+
         <footer className="absolute bottom-0 left-0 right-0 top-auto flex h-16 w-full items-center justify-center pr-[5%] md:h-18 lg:justify-start lg:px-[5%]">
           <p className="text-sm">{footerText}</p>
         </footer>
@@ -143,16 +164,16 @@ const Signup7 = (props: Signup7Props) => {
   );
 };
 
-export default Signup7
+export default Signup7;
 
 export const Signup7Defaults: Signup7Props = {
   logo: {
-    url: "#",
-    src: "https://relume-assets.s3.amazonaws.com/logo-image.svg",
+    url: "/",
+    src: "/icon/logo-colorful.png",
     alt: "Logo text",
   },
-  title: "Sign Up",
-  description: "Lorem ipsum dolor sit amet adipiscing elit.",
+  title: "Sign up",
+  description: "Enter your details below",
   signUpButton: {
     title: "Sign up",
   },
@@ -162,15 +183,15 @@ export const Signup7Defaults: Signup7Props = {
     iconLeft: <BiLogoGoogle className="size-6" />,
   },
   image: {
-    src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
+    src: "/img/Side-Image.png",
     alt: "Placeholder image",
   },
   logInText: "Already have an account?",
   logInLink: {
     text: "Log in",
-    url: "#",
+    url: "/",
   },
-  footerText: "© 2024 Relume",
+  footerText: "© Pedro maciel pinheiro",
 };
 
-Signup7.displayName = "Signup7";
+Signup7.displayName = "Sign-up";

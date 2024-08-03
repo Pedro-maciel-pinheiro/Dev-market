@@ -6,6 +6,7 @@ import {
   BiLogoYoutube,
 } from "react-icons/bi";
 import Link from "next/link";
+import Image from "next/image";
 
 type ImageProps = {
   url?: string;
@@ -53,12 +54,12 @@ const Footer = (props: Footer4Props) => {
       <div className="container">
         <div className="grid grid-cols-1 items-center justify-center justify-items-center gap-x-[4vw] gap-y-12 pb-12 md:pb-18 lg:grid-cols-[0.25fr_1fr_0.25fr] lg:justify-between lg:gap-y-4 lg:pb-20">
           <Link href={logo.url as string} className="lg:justify-self-start">
-            <p
+            <Image src={logo.src} alt="logo" width={150} height={60}
               className="inline-block
              font-bold uppercase font-serif"
             >
-              Dev{"-"}Market
-            </p>
+             
+            </Image>
           </Link>
           <Link
             href={"https://www.linkedin.com/in/jpmp1998/"}
@@ -98,9 +99,9 @@ const Footer = (props: Footer4Props) => {
                 key={index}
                 className="underline decoration-white underline-offset-1 "
               >
-                <a href={link.url} className="focus-visible:outline-none">
+                <Link href={link.url} className="focus-visible:outline-none">
                   {link.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -115,7 +116,7 @@ export default Footer;
 export const Footer4Defaults: Footer4Props = {
   logo: {
     url: "/",
-    src: "",
+    src: "/icon/logo-colorful.png",
     alt: "Logo image",
   },
   columnLinks: [
