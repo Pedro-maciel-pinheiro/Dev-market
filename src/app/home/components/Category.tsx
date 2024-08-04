@@ -1,4 +1,4 @@
-import { LinkDataHeader } from "@/data/links";
+import { LinkDataHeader } from "@/constant/links";
 import { PawPrint } from "lucide-react";
 import Link from "next/link";
 import React from "react";

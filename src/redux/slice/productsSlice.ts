@@ -1,4 +1,4 @@
-import { getProductsData, ProductsProps } from "@/data";
+import { getProductsData, ProductsProps } from "@/constant";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface ProductsState {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '@/redux/store';
 import { fetchProducts } from '@/redux/slice/productsSlice';
-import {ProductsProps} from "@/data/index"
+import {ProductsProps} from "@/constant/index"
 
 const SearchResultPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

@@ -1,7 +1,7 @@
 import SlideSwiper from "@/components/SlideSwiper/SlideSwiper";
 import { Button } from "@/components/ui/button";
-import { getProductsData, ProductsProps } from "@/data";
-import { LinkDataHeader } from "@/data/links";
+import { getProductsData, ProductsProps } from "@/constant";
+import { LinkDataHeader } from "@/constant/links";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

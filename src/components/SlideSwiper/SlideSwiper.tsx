@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import { PhoneWallpaper } from "@/data/phoneimgs";
+import { PhoneWallpaper } from "@/constant/phoneimgs";
 
 const SlideSwiper = () => {
   return (
@@ -29,11 +29,11 @@ const SlideSwiper = () => {
         {PhoneWallpaper.map((img, index) => (
           <SwiperSlide
             key={index}
-            className="overflow-hidden rounded-xl w-full h-full
+            className="overflow-hidden rounded-xl w-full h-full 
           relative
            "
           >
-            <div className="w-full h-full absolute  text-white font-semibold">
+            <div className="w-full h-full absolute  text-white font-semibold ">
               <div className="w-full h-full flex flex-col justify-end text-sm bg-black/20 lg:p-8">
                 <h1 className="px-2 text-lg lg:text-5xl ">{img.title}</h1>
                 <span className="px-3  ">{img.subtitle}</span>

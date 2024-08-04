@@ -1,5 +1,5 @@
 import React from "react";
-import { getProductsData, ProductsProps } from "@/data";
+import { getProductsData, ProductsProps } from "@/constant";
 import Image from "next/image";
 
 export default async function Products() {

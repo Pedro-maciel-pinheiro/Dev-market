@@ -1,4 +1,4 @@
-import { ProductsProps } from "@/data";
+import { ProductsProps } from "@/constant";
 import Image from "next/image";
 import React from "react";
 

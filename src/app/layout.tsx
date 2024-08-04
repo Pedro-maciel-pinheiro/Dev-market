@@ -7,6 +7,7 @@ import TopHeader from "@/components/Top-header/TopHeader";
 import { ShoppingCartProvider } from "@/context/shop/ShoppingCartContext";
 import ReduxProvider from "@/redux/provider";
 
+
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <ShoppingCartProvider>
       <html lang="en">

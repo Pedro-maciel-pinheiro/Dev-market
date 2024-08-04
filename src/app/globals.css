@@ -4,6 +4,7 @@
 
 
 
+
 *::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -14,9 +15,7 @@
   transform: translateX(-850px);
   opacity: 0;
 }
-.test-1{
-  
-}
+
 .w-test{
   width: 100%;
   max-width: 850px;

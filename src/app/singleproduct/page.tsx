@@ -1,6 +1,6 @@
 
 import AddToCart from "@/context/shop/AddToCart";
-import { getSingleProduct, ProductsProps } from "@/data";
+import { getSingleProduct, ProductsProps } from "@/constant";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import React from "react";

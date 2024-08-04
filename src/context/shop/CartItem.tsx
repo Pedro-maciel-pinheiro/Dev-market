@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getProductsData, ProductsProps } from "@/data";
+import { getProductsData, ProductsProps } from "@/constant";
 import Image, { StaticImageData } from "next/image";
 import { useShoppingCart } from "./ShoppingCartContext";
 

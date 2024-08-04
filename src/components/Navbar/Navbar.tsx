@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearch, fetchProducts } from "@/redux/slice/productsSlice";
-import { LinkDataNavbar } from "@/data/links";
+import { LinkDataNavbar } from "@/constant/links";
 import { SearchIcon, ShoppingCart } from "lucide-react";
 import { useShoppingCart } from "../../context/shop/ShoppingCartContext";
 import { Button } from "../ui/button";
@@ -14,6 +14,7 @@ import { AppDispatch } from "@/redux/store";
 import Image from "next/image";
 import UserOptions from "../user/UserOptions";
 import { Spin as Hamburger } from "hamburger-react";
+import { LogginButton } from "../auth/LogginButton";
 
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();
@@ -50,14 +51,15 @@ export default function Navbar() {
     }
   };
 
-  const isNavHidden = pathname === "/sign-up";
+  const isNavHidden =
+    pathname === "/auth/login" || pathname === "/auth/register";
 
   return (
     <>
       {!isNavHidden && (
         <div
           className="w-full h-12 text-black lg:flex max-w-7xl mx-auto
-     items-center justify-between border-b-2 relative hidden"
+     items-center justify-between border-b-2 relative hidden overflow-hidden"
         >
           <div className="flex gap-4 ">
             <Image
@@ -94,9 +96,11 @@ export default function Navbar() {
             </Button>
           </div>
           <div className="flex items-center gap-2">
-            <Link className="text-lg " href={"/sign-up"}>
-              Sign up
-            </Link>
+            <LogginButton>
+              <Link className="text-lg " href={"/sign-up"}>
+                Sign up
+              </Link>
+            </LogginButton>
             <div className="flex items-center  ">
               {cartQuantity > 0 && (
                 <>
@@ -129,10 +133,14 @@ export default function Navbar() {
         </div>
       )}
 
-      <div className="flex w-full h-12 border-b-2 lg:hidden ">
+      {/* navbar mobile */}
+
+      <div className="flex w-full h-12 border-b-2 lg:hidden overflow-hidden">
         <button
           onClick={() => setNavIsOpen((prev) => !prev)}
-          className={`w-12 h-12  rounded-sm ${navIsOpen?"absolute z-30 bg-white":"relative"}`}
+          className={`w-12 h-12  rounded-sm ${
+            navIsOpen ? "absolute z-30 bg-white" : "relative"
+          }`}
         >
           <Hamburger toggled={navIsOpen} />
         </button>
@@ -140,7 +148,7 @@ export default function Navbar() {
         <div
           className={`transition-all duration-700 ${
             navIsOpen
-              ? "w-full h-full backdrop-blur-3xl bg-black/50 absolute z-20 "
+              ? "w-full h-full backdrop-blur-3xl bg-black/50 absolute z-20 overflow-hidden"
               : "w-full h-full absolute -z-50  opacity-0"
           }`}
         >
@@ -160,9 +168,6 @@ export default function Navbar() {
               </Link>
             ))}
           </li>
-          <div>
-            <UserOptions navIsOpen={navIsOpen} />
-          </div>
         </div>
         <div className="flex items-center justify-center gap-1 ">
           <input
