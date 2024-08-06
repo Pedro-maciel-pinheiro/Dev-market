@@ -1,7 +1,8 @@
 "use client";
 import { CircleX, LogOut, ShoppingBag, Star, User } from "lucide-react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
 interface UserOptionsProps {
   navIsOpen?: boolean;
@@ -9,6 +10,10 @@ interface UserOptionsProps {
 
 const UserOptions = ({ navIsOpen }: UserOptionsProps) => {
   const [handleUserClick, setHandleUserClick] = useState(false);
+
+  const onClick = () => {
+    signOut();
+  };
   return (
     <>
       <div
@@ -34,7 +39,7 @@ const UserOptions = ({ navIsOpen }: UserOptionsProps) => {
         >
           <li>
             <Link
-              href={""}
+              href={"/settings"}
               className="flex items-center gap-2 text-sm  hover:underline"
             >
               <User /> <p>Manage My Account</p>
@@ -42,7 +47,7 @@ const UserOptions = ({ navIsOpen }: UserOptionsProps) => {
           </li>
           <li>
             <Link
-              href={""}
+              href={"/cart"}
               className="flex items-center gap-2 text-sm  hover:underline"
             >
               <ShoppingBag /> <p>My Order</p>
@@ -64,74 +69,13 @@ const UserOptions = ({ navIsOpen }: UserOptionsProps) => {
               <Star /> <p>My Reviews</p>
             </Link>
           </li>
-          <li>
-            <Link
-              href={""}
-              className="flex items-center gap-2 text-sm  hover:underline"
-            >
-              <LogOut className="rotate-180" /> <p>Logout</p>
-            </Link>
+          <li onClick={onClick} className="flex gap-2 cursor-pointer hover:underline">
+            <LogOut className="rotate-180" /> <p>Logout</p>
           </li>
         </ul>
       </div>
 
-      <div
-        className={` text-white font-semibold transition-all
-         duration-200  absolute 
-         backdrop-blur-3xl  rounded-md mt-4 
-         ${
-           navIsOpen
-             ? "w-full h-56 translate-x-0 z-50 "
-             : "w-full h-56 -translate-x-56 -z-50 "
-         }`}
-      >
-        <ul
-          onClick={() => setHandleUserClick(false)}
-          className="flex flex-col items-start px-2 justify-center gap-3 mt-2"
-        >
-          <li>Hello User Pedro </li>
-          <li>
-            <Link
-              href={""}
-              className="flex items-center gap-2 text-sm  hover:underline"
-            >
-              <User /> <p>Manage My Account</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={""}
-              className="flex items-center gap-2 text-sm  hover:underline"
-            >
-              <ShoppingBag /> <p>My Order</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={""}
-              className="flex items-center gap-2 text-sm  hover:underline"
-            >
-              <CircleX /> <p>My Cancellations</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={""}
-              className="flex items-center gap-2 text-sm  hover:underline"
-            >
-              <Star /> <p>My Reviews</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={""}
-              className="flex items-center gap-2 text-sm  hover:underline"
-            >
-              <LogOut className="rotate-180" /> <p>Logout</p>
-            </Link>
-          </li>
-        </ul>
-      </div>
+     
     </>
   );
 };

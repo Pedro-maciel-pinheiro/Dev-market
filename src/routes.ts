@@ -4,7 +4,9 @@
 */
 
 export const publicRoutes = [
-  "/", "/about" , "/contact" 
+  "/", "/about" , "/contact" ,"/singleproduct","/products/woman"
+  ,"/products/groceries" ,"/products/furniture" ,"/products/fragrances",
+  "/auth/new-verification"
 ]
 
 /** An array of routes that are accesible to the public  
@@ -14,6 +16,8 @@ export const publicRoutes = [
 export const authRoutes = [
     "/auth/login",
     "/auth/register",
+    "/auth/error",
+
 ]
 
 

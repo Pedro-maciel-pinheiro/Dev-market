@@ -30,6 +30,8 @@ export const RegisterForm = () => {
       email: "",
       password: "",
       name:"",
+      phone:"",
+      address:"",
     },
   });
 
@@ -75,6 +77,24 @@ export const RegisterForm = () => {
             ></FormField>
             <FormField
               control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="15555555"
+                      type="phone"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            ></FormField>
+            <FormField
+              control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
@@ -85,6 +105,24 @@ export const RegisterForm = () => {
                       disabled={isPending}
                       placeholder="dev.frontend@example.com"
                       type="email"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            ></FormField>
+            <FormField
+              control={form.control}
+              name="address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Address</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="dev.frontend@example.com"
+                      type="address"
                     />
                   </FormControl>
                   <FormMessage />

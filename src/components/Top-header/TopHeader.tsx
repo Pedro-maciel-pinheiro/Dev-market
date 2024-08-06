@@ -6,8 +6,8 @@ import React from "react";
 const TopHeader = () => {
   const pathname = usePathname();
 
-  const isHeaderHidden =
-    pathname === "/auth/login" || pathname === "/auth/register";
+  const isHeaderHidden = pathname === "/settings" || pathname === "/auth/error" || pathname === "/auth/login" || pathname === "/auth/register";
+    
   return (
     <>
       {!isHeaderHidden && (

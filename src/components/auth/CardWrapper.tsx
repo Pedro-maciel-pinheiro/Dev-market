@@ -26,8 +26,8 @@ export const CardWrapper = ({
 }: CardWrapperProps) => {
   return (
     <Card className="w-[400px] shadow-xl">
-     <CardHeader className="font-semibold">
-        Next-Auth
+     <CardHeader className="font-semibold text-center">
+       {headerLabel}
      </CardHeader>
      <CardContent>
         {children}

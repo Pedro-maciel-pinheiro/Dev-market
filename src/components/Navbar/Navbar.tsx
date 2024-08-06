@@ -16,8 +16,11 @@ import UserOptions from "../user/UserOptions";
 import { Spin as Hamburger } from "hamburger-react";
 import { LogginButton } from "../auth/LogginButton";
 
+import { useCurrentUser } from "@/hooks/use-current-user";
+
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();
+  const user = useCurrentUser();
   const { cartQuantity } = useShoppingCart();
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
@@ -52,14 +55,17 @@ export default function Navbar() {
   };
 
   const isNavHidden =
-    pathname === "/auth/login" || pathname === "/auth/register";
+    pathname === "/settings" ||
+    pathname === "/auth/error" ||
+    pathname === "/auth/login" ||
+    pathname === "/auth/register";
 
   return (
     <>
       {!isNavHidden && (
         <div
           className="w-full h-12 text-black lg:flex max-w-7xl mx-auto
-     items-center justify-between border-b-2 relative hidden overflow-hidden"
+     items-center justify-between border-b-2 relative hidden "
         >
           <div className="flex gap-4 ">
             <Image
@@ -96,15 +102,22 @@ export default function Navbar() {
             </Button>
           </div>
           <div className="flex items-center gap-2">
-            <LogginButton>
-              <Link className="text-lg " href={"/sign-up"}>
-                Sign up
-              </Link>
-            </LogginButton>
+            {user ? (
+              <div>Hello {user?.name}</div>
+            ) : (
+              <div>
+                <LogginButton>
+                  <Link className="text-lg " href={"/sign-up"}>
+                    Sign up
+                  </Link>
+                </LogginButton>
+              </div>
+            )}
+
             <div className="flex items-center  ">
               {cartQuantity > 0 && (
                 <>
-                  <Link href={"payment"}>
+                  <Link href={"cart"}>
                     <Button
                       className="relative bg-transparent hover:bg-transparent hover:scale-105
                  shadow-transparent text-black transition-all"
@@ -125,9 +138,7 @@ export default function Navbar() {
                 </>
               )}
 
-              <div>
-                <UserOptions />
-              </div>
+              <div>{user ? <UserOptions /> : <div></div> }</div>
             </div>
           </div>
         </div>
