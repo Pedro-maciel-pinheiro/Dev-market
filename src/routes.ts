@@ -8,6 +8,7 @@ export const publicRoutes = [
   "/about",
   "/contact",
   "/singleproduct",
+  "/products",
   "/products/woman",
   "/products/groceries",
   "/products/furniture",
