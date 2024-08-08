@@ -3,9 +3,9 @@ import React from "react";
 
 const DeliverInfo = () => {
   return (
-    <div className="max-w-7xl mx-auto flex  h-72">
+    <div className=" mx-auto flex  h-72">
       <div className="w-full h-full flex items-center justify-around">
-        <div className="flex flex-col items-center justify-center gap-3">
+        <div className="flex flex-col items-center justify-center gap-3 w-full">
           <div
             className="w-20 h-20 bg-gray-300 flex
        items-center justify-center rounded-full 
@@ -24,11 +24,11 @@ const DeliverInfo = () => {
             </span>
           </div>
           <span className="text-center">
-            <h6 className="font-semibold">FREE AND FAST DELIVERY</h6>
-            <p> Free delivery for all orders over $140</p>
+            <h6 className="font-semibold text-sm">FREE AND FAST DELIVERY</h6>
+            <p className="text-[12px] md:text-sm"> Free delivery for all orders over $140</p>
           </span>
         </div>
-        <div className="flex flex-col items-center justify-center gap-3">
+        <div className="flex flex-col items-center justify-center gap-3 w-full">
           <div
             className="w-20 h-20 bg-gray-300 flex
        items-center justify-center rounded-full 
@@ -47,11 +47,11 @@ const DeliverInfo = () => {
             </span>
           </div>
           <span className="text-center">
-            <h6 className="font-semibold">24/7 CUSTOMER SERVICE</h6>
-            <p>Friendly 24/7 customer support</p>
+            <h6 className="font-semibold text-sm">24/7 CUSTOMER SERVICE</h6>
+            <p className="text-[12px] md:text-sm">Friendly 24/7 customer support</p>
           </span>
         </div>
-        <div className="flex flex-col items-center justify-center gap-3">
+        <div className="flex flex-col items-center justify-center gap-3 w-full">
           <div
             className="w-20 h-20 bg-gray-300 flex
        items-center justify-center rounded-full 
@@ -70,8 +70,8 @@ const DeliverInfo = () => {
             </span>
           </div>
           <span className="text-center">
-            <h6 className="font-semibold">MONEY BACK GUARANTEE</h6>
-            <p>We reurn money within 30 days</p>
+            <h6 className="font-semibold text-sm">MONEY BACK GUARANTEE</h6>
+            <p className="text-[12px] md:text-sm">We reurn money within 30 days</p>
           </span>
         </div>
       </div>

@@ -4,12 +4,10 @@ import { useShoppingCart } from "../ShoppingCartContext";
 import CartItem from "../CartItem";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import PacmanLoader from "react-spinners/PacmanLoader";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { getProductsData, ProductsProps } from "@/constant";
-import { CircleChevronRight } from "lucide-react";
+
 import Link from "next/link";
-import MaskButton from "@/components/MaskButton";
 
 export default function ShoppingCart() {
   const { cartItems } = useShoppingCart();
@@ -45,8 +43,10 @@ export default function ShoppingCart() {
       <div className="flex flex-col justify-center items-center  w-full h-[400px] max-w-7xl mx-auto ">
         <h1 className="text-3xl">Shopping Cart</h1>
         <div className="mt-8 text-center font-medium">
-             <p>Your cart is empty{"."}</p>
-             <Link href={"/"} className="underline">Back to shopping!</Link>
+          <p>Your cart is empty{"."}</p>
+          <Link href={"/"} className="underline">
+            Back to shopping!
+          </Link>
         </div>
       </div>
     );
@@ -61,6 +61,13 @@ export default function ShoppingCart() {
   const subtotalAfterDiscount = totalPrice - discountAmount;
   const taxAmount = subtotalAfterDiscount * taxRate;
   const finalPrice = subtotalAfterDiscount + taxAmount + shipCost;
+
+  const productParams = cartItems
+    .map((item) => {
+      const product = products.find((p) => p.id === item.id);
+      return `id=${item.id}&name=${product?.title}&quantity=${item.quantity}&price=${product?.price}&image=${product?.thumbnail}`;
+    })
+    .join("&");
 
   return (
     <>
@@ -116,11 +123,9 @@ export default function ShoppingCart() {
               <div>{formatCurrency(finalPrice)}</div>
             </div>
             <div className="flex flex-col gap-2 items-center justify-center mt-4">
-              <MaskButton
-                title={"Proceed to Checkout"}
-                btnColor={"after:bg-blue-700 item-center w-60"}
-                linkBasePath={""}
-              />
+            <Link href={`/checkout?${productParams}`}>
+              <Button>Proceed to Checkout</Button>
+            </Link>
               <div className="flex gap-2 text-sm">
                 or{" "}
                 <Link href={"/"} className="underline text-blue-400">

@@ -10,9 +10,15 @@ interface CardProps {
   title: string;
   subtitle: string;
   productslist: ProductsProps[];
+  overFlow: string;
 }
 
-const CustomCardGrid = ({ title, subtitle, productslist }: CardProps) => {
+const CustomCardGrid = ({
+  title,
+  subtitle,
+  productslist,
+  overFlow,
+}: CardProps) => {
   return (
     <>
       <div className="h-full w-full  mx-auto border-t mt-6 px-2 ">
@@ -27,11 +33,9 @@ const CustomCardGrid = ({ title, subtitle, productslist }: CardProps) => {
       </div>
 
       <div
-        className="w-80  md:w-full h-[680px] grid grid-cols-1 md:grid-cols-2
+        className={`w-80  md:w-full  grid grid-cols-1 md:grid-cols-2
          lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4 justify-center
-       overflow-y-scroll xl:overflow-y-hidden mt-6  mb-6 "
-       
-        
+        ${overFlow} mt-6  mb-6 `}
       >
         {productslist.map((product, index) => (
           <section key={index} className="w-full h-full ">
@@ -48,7 +52,7 @@ const CustomCardGrid = ({ title, subtitle, productslist }: CardProps) => {
                   alt={product.title}
                   width={200}
                   height={200}
-                  className="object-cover"
+                  className="object-contain max-w-[200px] max-h-[200px]"
                 />
               </Link>
               <li>{product.title}</li>
@@ -71,15 +75,6 @@ const CustomCardGrid = ({ title, subtitle, productslist }: CardProps) => {
             </ul>
           </section>
         ))}
-      </div>
-
-      <div
-        className="w-full h-full mb-8
-      border-b-2 flex items-center justify-center"
-      >
-        <Link href={"/products"}>
-          <Button className="bg-[#DB4444] w-56 mb-4">View All Products</Button>
-        </Link>
       </div>
     </>
   );

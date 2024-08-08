@@ -1,10 +1,9 @@
-import { LogginForm } from '@/components/auth/LogginForm'
-import React from 'react'
+import React from "react";
+import { LogginForm } from "@/components/auth/LogginForm";
+import Image from "next/image";
 
 const LoginPage = () => {
-  return (
-   <LogginForm/>
-  )
-}
+  return <LogginForm />;
+};
 
-export default LoginPage
+export default LoginPage;

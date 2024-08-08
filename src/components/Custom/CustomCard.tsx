@@ -1,9 +1,10 @@
+"use client";
 import { ProductsProps } from "@/constant";
 import Image from "next/image";
-import React from "react";
-
+import React, { useRef } from "react";
 
 import { StarIcon } from "lucide-react";
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -14,6 +15,25 @@ interface CardProps {
 }
 
 const CustomCard = ({ title, subtitle, productslist }: CardProps) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 200,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <>
       <div className="h-full w-full  mx-auto  mt-6 px-2 ">
@@ -24,14 +44,32 @@ const CustomCard = ({ title, subtitle, productslist }: CardProps) => {
           <span className="w-3 h-6 bg-[#DB4444] rounded-xl" />
           <h1>{title}</h1>
         </div>
-        <h1 className="font-semibold mt-4 text-2xl">{subtitle}</h1>
+
+        <div className="flex w-full items-center justify-between">
+          <h1 className="font-semibold mt-4 text-2xl">{subtitle}</h1>
+          <div className=" flex justify-center gap-2 items-center relative w-[100px]">
+            <button
+              className="bg-slate-200 rounded-full active:-translate-x-1 transition-all"
+              onClick={scrollLeft}
+            >
+              <IoIosArrowRoundBack className="" size={35} />
+            </button>
+            <button
+              className="bg-slate-200 rounded-full active:translate-x-1 transition-all"
+              onClick={scrollRight}
+            >
+              <IoIosArrowRoundForward size={35} className="" />
+            </button>
+          </div>
+        </div>
       </div>
 
       <div
+        ref={scrollContainerRef}
         className="w-full h-[350px] flex flex-row transition-all duration-300
-        px-4 mt-6 overflow-x-hidden hover:overflow-x-scroll
+        px-4 mt-6  overflow-hidden
        items-center justify-start gap-2 
-        overflow-y-hidden mb-6"
+         mb-6"
       >
         {productslist.map((product, index) => (
           <section key={index} className="w-full h-80 ">
@@ -73,9 +111,11 @@ const CustomCard = ({ title, subtitle, productslist }: CardProps) => {
         ))}
       </div>
 
-      <div className="w-full h-full mb-8
-      border-b-2 flex items-center justify-center">
-        <Link href={"/products"} >
+      <div
+        className="w-full h-full mb-8
+      border-b-2 flex items-center justify-center"
+      >
+        <Link href={"/products"}>
           <Button className="bg-[#DB4444] w-56 mb-4">View All Products</Button>
         </Link>
       </div>

@@ -9,9 +9,9 @@ type AddToCartProps = {
 const AddToCart = ({ product_id }: AddToCartProps) => {
   const { increaseCartQuantity } = useShoppingCart();
   return (
-    <div>
-      <button onClick={() => increaseCartQuantity(product_id)}>
-        AddToCart
+    <div className="w-full">
+      <button onClick={() => increaseCartQuantity(product_id)} className="w-full text-white font-medium">
+        Add To Cart
       </button>
     </div>
   );

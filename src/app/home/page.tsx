@@ -8,8 +8,9 @@ import React from "react";
 import CustomCard from "../../components/Custom/CustomCard";
 import CustomCardGrid from "../../components/Custom/CustomCardGrid";
 import GridCard from "../../components/Custom/GridCard";
-import Category from "./components/Category";
+
 import DeliverInfo from "./components/DeliverInfo";
+import { Category } from "./components/Category";
 
 export default async function Hero() {
   const productsList: ProductsProps[] = await getProductsData();
@@ -38,10 +39,11 @@ export default async function Hero() {
             </Link>
           ))}
         </section>
-        <section className="w-full h-full mt-1 mx-4">
+        <section className="w-full h-full mt-1 mx-4 overflow-hidden rounded-lg">
           <SlideSwiper />
         </section>
       </div>
+
       {/* Flash Sales */}
       <div className="max-w-7xl">
         <CustomCard
@@ -49,6 +51,10 @@ export default async function Hero() {
           subtitle={"Flash Sales"}
           productslist={productsLimit}
         />
+      </div>
+      {/* Category */}
+      <div className="max-w-7xl ">
+        <Category />
       </div>
 
       <div className="max-w-7xl">
@@ -65,7 +71,7 @@ export default async function Hero() {
       >
         <div
           className="bg-[#0D0D0D] flex items-center relative
-        justify-between w-full lg:w-[1300px] h-full max-w-7xl rounded-sm"
+        justify-between w-full lg:w-[1300px] h-full max-w-[90%] md:max-w-7xl rounded-sm"
         >
           <div className="w-96 h-96 text-white  mx-8 md:w-[400px] absolute md:relative">
             <p className="text-sm md:text-xl font-semibold text-green-500">
@@ -75,7 +81,7 @@ export default async function Hero() {
               Enhance Your Music Experience
             </h1>
             <ul
-              className="flex flex-col md:flex-row gap-4  text-black w-full px-8 md:px-0
+              className="flex flex-col md:flex-row gap-4  text-black w-full px-16 md:px-0
              h-36 items-end md:items-center  justify-end md:justify-center mt-16 md:mt-0"
             >
               <li
@@ -151,12 +157,23 @@ export default async function Hero() {
         </div>
       </div>
 
-      <div className="max-w-7xl ">
+      <div className="max-w-7xl mx-auto md:mx-0">
         <CustomCardGrid
           title={"This Month"}
           subtitle={"Best Selling Products"}
           productslist={OurProductsList}
+          overFlow={"overflow-y-scroll xl:overflow-hidden h-[700px]"}
         />
+        <div
+          className="w-full h-full mb-8 
+      border-b-2 flex items-center justify-center"
+        >
+          <Link href={"/products"}>
+            <Button className="bg-[#DB4444] w-56 mb-4">
+              View All Products
+            </Button>
+          </Link>
+        </div>
       </div>
 
       <div className="max-w-7xl ">
