@@ -9,17 +9,7 @@ const GridCard = () => {
     lg:grid-rows-1 lg:grid-flow-col gap-2  "
     >
       <Link
-        href={{
-          pathname: "/special",
-          query: {
-            id: "00032",
-            title: "PlayStation 5",
-            price: "700",
-            category: "Games",
-            image: "/img/ps5.png",
-            brand: "Sony",
-          },
-        }}
+        href={"/products"}
         className="w-full h-full lg:row-span-3 border bg-[#0D0D0D] rounded-lg relative"
       >
         <div
@@ -42,7 +32,7 @@ const GridCard = () => {
       </Link>
       {/* Womans category */}
       <Link
-        href={"/products/woman"}
+        href={"/products"}
         className="flex justify-between w-full relative
        h-72 lg:col-span-2 border bg-[#0D0D0D] rounded-lg"
       >
@@ -56,7 +46,7 @@ const GridCard = () => {
           </p>
           <p className="underline mt-2">Shop Now</p>
         </div>
-        <span/>
+        <span />
         <Image
           src={"/img/black-woman.png"}
           className="object-contain mt-6 "
@@ -67,17 +57,7 @@ const GridCard = () => {
       </Link>
       {/* sound category */}
       <Link
-        href={{
-          pathname: "/special",
-          query: {
-            id: "00031",
-            title: "JBL Speaker",
-            price: "120",
-            category: "Speakers",
-            image: "/img/jbl.png",
-            brand: "JBL",
-          },
-        }}
+        href={"/products"}
         className="w-full h-full lg:row-span-2  border  rounded-lg
        bg-[#0D0D0D] flex items-center justify-center relative"
       >
@@ -101,12 +81,7 @@ const GridCard = () => {
       </Link>
       {/* perfume category */}
       <Link
-        href={{
-          pathname: "/singleproduct",
-          query: {
-            id: "0010",
-          },
-        }}
+        href={"/products"}
         className="w-full h-full lg:row-span-2 border rounded-lg
       bg-[#0D0D0D] flex items-center justify-center relative"
       >

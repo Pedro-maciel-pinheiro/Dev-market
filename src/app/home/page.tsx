@@ -110,18 +110,7 @@ export default async function Hero() {
               </li>
             </ul>
             <div className="flex items-center justify-start">
-              <Link
-                href={{
-                  pathname: "/special",
-                  query: {
-                    id: "00031",
-                    price: "120",
-                    category: "Speakers",
-                    image: "/img/jbl.png",
-                    brand: "JBL",
-                  },
-                }}
-              >
+              <Link href={"/products"}>
                 <Button
                   className="bg-green-500 text-white w-40 h-12 transition-all duration-300
                hover:bg-slate-100 hover:text-black hover:translate-x-1"
@@ -132,16 +121,7 @@ export default async function Hero() {
             </div>
           </div>
           <Link
-            href={{
-              pathname: "/special",
-              query: {
-                id: "00031",
-                price: "120",
-                category: "Speakers",
-                image: "/img/jbl.png",
-                brand: "JBL",
-              },
-            }}
+            href={"/products"}
             className="flex items-center justify-center
            w-[400px] md:w-full h-96 md:h-full "
           >

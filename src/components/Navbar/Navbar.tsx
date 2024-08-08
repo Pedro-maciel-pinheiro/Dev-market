@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearch, fetchProducts } from "@/redux/slice/productsSlice";
 import { LinkDataNavbar } from "@/constant/links";
-import { SearchIcon, ShoppingCart } from "lucide-react";
+import { LogOut, SearchIcon, ShoppingCart } from "lucide-react";
 import { useShoppingCart } from "../../context/shop/ShoppingCartContext";
 import { Button } from "../ui/button";
 import { usePathname, useRouter } from "next/navigation";
@@ -14,21 +14,24 @@ import { AppDispatch } from "@/redux/store";
 import Image from "next/image";
 import UserOptions from "../user/UserOptions";
 
-import { LogginButton } from "../auth/LogginButton";
-
+import { Spin as Hamburger } from "hamburger-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import { signOut } from "next-auth/react";
+import { LogginButton } from "../auth/LogginButton";
 
 export default function Navbar() {
   const dispatch: AppDispatch = useDispatch();
   const user = useCurrentUser();
   const { cartQuantity } = useShoppingCart();
   const [isClient, setIsClient] = useState(false);
-
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
   const [navIsOpen, setNavIsOpen] = useState(false);
+
+  const onClick = () => {
+    signOut();
+  };
 
   useEffect(() => {
     setIsClient(true);
@@ -132,13 +135,62 @@ export default function Navbar() {
                   </div>
                 </>
               )}
-             <UserOptions/>
+              <UserOptions />
             </div>
           </div>
         </div>
       )}
 
       {/* navbar mobile */}
+
+      {!isNavHidden && (
+        <div className="w-full h-12 border-b-2 mb-2 block lg:hidden">
+          <div className="flex items-center justify-between w-full absolute z-50 ">
+            <div
+              className={navIsOpen ? "text-white" : "relative"}
+              onClick={() => setNavIsOpen((prev) => !prev)}
+            >
+              <Hamburger toggled={navIsOpen} />
+            </div>
+          </div>
+          <div
+            className={` fixed  z-30 transition-all duration-1000 bg-black/20 ${
+              navIsOpen ? "w-full h-96 backdrop-blur-3xl" : " w-0 h-0"
+            }`}
+          >
+            <div className="">
+              <section
+                onClick={() => setNavIsOpen(false)}
+                className={`text-white font-semibold text-lg flex absolute transition-all duration-500
+               flex-col mt-16 gap-5 px-2  w-full ${
+                 navIsOpen ? "translate-x-0 z-50 absolute" : "-translate-x-32"
+               }`}
+              >
+                {LinkDataNavbar.map((data, index) => (
+                  <Link
+                    key={index}
+                    href={data.linkpath}
+                    className="hover:underline transition-all duration-200 border-b w-full"
+                  >
+                    {data.title}
+                  </Link>
+                ))}
+                <LogginButton>
+                  <Link href={"/sign-up"}>Sign up</Link>
+                </LogginButton>
+
+                <p className="w-full border-b mt-8">User : {user?.name}</p>
+                <p
+                  onClick={onClick}
+                  className="flex gap-2 cursor-pointer hover:underline w-full justify-end"
+                >
+                  <LogOut className="rotate-180" /> <p>Logout</p>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

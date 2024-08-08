@@ -15,6 +15,7 @@ export const publicRoutes = [
   "/cart",
   "/result",
   "/auth/new-verification",
+  "/checkout",
 ];
 
 /** An array of routes that are accesible to the public

@@ -10,7 +10,7 @@ const Authlayout = ({ children }: { children: React.ReactNode }) => {
         justify-center gap-2 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
      from-sky-400 to to-blue-800 "
       >
-        <Link href={"/"} className="absolute top-0 mt-4">
+        <Link href={"/"} className=" top-0 mt-4">
           <Image
             src={"/icon/logo-black.png"}
             alt="logo"
