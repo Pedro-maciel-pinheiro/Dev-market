@@ -31,3 +31,10 @@
 <li>Database: Neon for managing user authentication and data</li>
 <li>Authentication: Google and GitHub OAuth</li>
 <li>Animations: Framer Motion for smooth transitions and dynamic interactions</li>
+
+<h1>Usage</h1>
+
+<li>Product Search and Filter: Use the search bar to find specific products. Filters allow you to refine by categories and features.</li>
+<li>Add to Cart: Click "Add to Cart" on a product to save it in your cart.</li>
+<li>Checkout: View cart details, including all products and their total value, and proceed to checkout.</li>
+<li>User Authentication: Sign in with Google or GitHub to access personalized features.</li>
